@@ -1,0 +1,45 @@
+
+
+export const CardOverride: Override = () => {
+    return {
+        left: data.left,
+        right: data.right,
+        top: data.top,
+        bottom: data.bottom,
+    }
+}
+
+export const PlayOverride: Override = () => {
+    return {
+        opacity: data.opacity, 
+    }
+}
+
+export const BackgroundOverride: Override = () => {
+    return {
+        opacity: data.backgroundOpacity,
+    }
+}
+
+export const Animate: Override = () => {
+    return {
+        onTap() {
+            data.cardOpen = !data.cardOpen
+            if(data.cardOpen) {
+                animate.spring(data.left, 20, springOptions)
+                animate.spring(data.right, 20, springOptions)
+                animate.spring(data.top, 80, springOptions)
+                animate.spring(data.bottom, 0, springOptions)
+                animate(data.opacity, 0)
+                animate(data.backgroundOpacity, 0.8)
+            } else {
+                animate.spring(data.left, 40, springOptions)
+                animate.spring(data.right, 40, springOptions)
+                animate.spring(data.top, 159, springOptions)
+                animate.spring(data.bottom, 448, springOptions)
+                animate(data.opacity, 1)
+                animate(data.backgroundOpacity, 0)
+            }
+        },
+    }
+}
